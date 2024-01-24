@@ -27,8 +27,7 @@ int lca_query(int N, int p, int q) //N=নোড সংখ্যা
   {
       int tmp, log, i;
 
-      if (L[p] < L[q])
-          tmp = p, p = q, q = tmp;
+      if (L[p] < L[q]) swap(p, q);
 
         log=1;
       while(1) {

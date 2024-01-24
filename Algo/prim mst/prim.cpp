@@ -9,7 +9,6 @@ using namespace std;
 ll mod = 1e9+7;
 vector<pair<ll, ll>> v[1000006];
 
-
 double primmst(ll i, ll n){
     priority_queue<pair<ll, ll>, vector<pair<ll, ll>>, greater<pair<ll, ll>>> pq;
 
