@@ -1,22 +1,27 @@
 #include<bits/stdc++.h>
+#define tup tuple<ll, ll>
+#define pi pair<ll, ll>
 #define endl '\n'
 
 using namespace std;
 using ll = long long;
 
-vector<vector<pair<ll, ll>>> v;
-map<ll, ll> dis;
+const ll imx = 2e5+5;
+ll mod = 1e9+7;
 
-ll dijkstra(ll i){
-    priority_queue<pair<ll, ll>, vector<pair<ll, ll>>, greater<pair<ll, ll>>> pq;
+vector<pi> g[imx];
+vector<ll> dis, v1;
+
+void dijkstra(ll i){
+    priority_queue<tup, vector<tup>, greater<tup>> pq;
     dis[i] = 0;
-    pair<ll, ll> pi;
-    pq.push({0, i});
+    pq.push({dis[i], i});
     while(!pq.empty()){
-        pi = pq.top();
+        auto [d, u] = pq.top();
         pq.pop();
-        ll u = pi.second;
-        for(auto x : v[u]){
+        //cout << d << " " << u << endl;
+        if(d != dis[u]) continue;
+        for(auto x : g[u]){
             if(dis[u] + x.second < dis[x.first]){
                 dis[x.first] = dis[u] + x.second;
                 pq.push({dis[x.first], x.first});
@@ -30,18 +35,16 @@ int main(){
     ll n, m, i, j;
 
     cin >> n >> m;
-    v = vector<vector<pair<ll, ll>>> (n+1, vector<pair<ll, ll>>(0));
 
-    for(i=1;i<=n;i++) dis[i] = 1e12;
+    dis = vector<ll> (n+1, 1e18);
     for(i=0;i<m;i++){
-        ll u, vv, cost;
-        cin >> u >> vv >> cost;
-        v[u].push_back({vv, cost});
-        v[vv].push_back({u, cost});
+        ll u, v, cost;
+        cin >> u >> v >> cost;
+        g[u].push_back({v, cost});
+        g[v].push_back({u, cost});
     }
 
-    ll ans = dijkstra(1);
-
-    for(auto x : dis) cout << x.second << " ";
+    dijkstra(1);
+    for(auto x : dis) cout << x << " ";
 
 }

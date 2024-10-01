@@ -9,11 +9,12 @@ using namespace std;
 
 ll mod = 1000000007;
 
-ll binpow(ll a, ll b){
+ll binpow(ll a, ll b, ll mod){
     ll res = 1, i;
     for(i=0;(1ll<<i)<=b;i++){
-        if(b&(1ll<<i)) res *= a;
+        if(b&(1ll<<i)) res *= a, res %= mod;
         a *= a;
+		a %= mod;
     }
     return res;
 }
@@ -25,7 +26,7 @@ void solve(ll cs){
     cin >> n;
     while(n--){
         cin >> a >> b;
-        cout << binpow(a, b) << endl;
+        cout << binpow(a, b, mod) << endl;
     }
 
     cout << endl;

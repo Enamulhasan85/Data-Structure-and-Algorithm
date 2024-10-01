@@ -43,9 +43,6 @@ pair<string, ll> DP(ll i, ll l, ll h, ll st, string &s1, string &s2){
     return dp[i][l][h][st] = ans;
 }
 
-
-
-
 void solve(ll cs)
 {
     ll n, m, i, a, b, c, d, j, k, ans=0, mn = 1e15, mx, cnt, q;
@@ -151,6 +148,8 @@ void solve(ll cs)
     cout << endl;
 
 }
+
+
 
 int main(){
     ios_base::sync_with_stdio(false); cin.tie(NULL);
