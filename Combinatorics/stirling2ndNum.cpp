@@ -9,9 +9,9 @@ const ll imx = 200;
 int main() {
 
 	// Stirling 2nd: From n different things divide into k
-	//     {n, k} = {n-1, k-1} + k * {n-1, k}
- 	//     if k = 1 then {n, 1} = 1;
- 	//     if k = n then {n, n} = 1;
+	// {n, k} = {n-1, k-1} + k * {n-1, k}
+ 	// if k = 1 then {n, 1} = 1;
+ 	// if k = n then {n, n} = 1;
 
  	ll stnum[imx+5][imx+5];
 
